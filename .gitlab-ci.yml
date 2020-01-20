@@ -1,0 +1,25 @@
+image: rustlang/rust:nightly-alpine
+
+stages:
+    - test
+    - build
+
+test:
+    stage: test
+    script:
+        - cargo test
+    only:
+        refs:
+            - master
+            - develop
+            - feature/gitlab-ci
+
+build:
+    stage: build
+    script:
+        - cargo build
+    only:
+        refs:
+            - master
+            - develop
+            - feature/gitlab-ci
