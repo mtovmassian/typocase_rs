@@ -1,1 +1,1 @@
-pub mod str_comps;
+pub mod core;

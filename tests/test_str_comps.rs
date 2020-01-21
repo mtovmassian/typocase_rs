@@ -2,7 +2,7 @@ extern crate typocase_rs;
 
 #[cfg(test)]
 mod test_split_on_upper_case_letters {
-    use typocase_rs::str_comps;
+    use typocase_rs::core::str_comps;
 
     fn fixture(_string: &String) -> Vec<String> {
         let instance = str_comps::StringCompounds::from(_string);
@@ -74,7 +74,7 @@ mod test_split_on_upper_case_letters {
 
 #[cfg(test)]
 mod test_split_on_special_char {
-    use typocase_rs::str_comps;
+    use typocase_rs::core::str_comps;
 
     fn fixture(_string: &String) -> Vec<String> {
         let instance = str_comps::StringCompounds::from(_string);
@@ -131,7 +131,7 @@ mod test_split_on_special_char {
     }
 
     #[test]
-    fn no_special_char_sep() {
+    fn case_no_special_char_sep() {
         assert_eq!(
             fixture(&String::from("abcdefghi")),
             vec!["abcdefghi"]
@@ -139,11 +139,41 @@ mod test_split_on_special_char {
     }
 
     #[test]
-    fn no_special_char_sep_and_uppercase_letters() {
+    fn case_no_special_char_sep_and_uppercase_letters() {
         assert_eq!(
             fixture(&String::from("abcDefGhi")),
             vec!["abcdefghi"]
         );
     }
+
+    #[cfg(test)]
+    mod test_extract {
+        use typocase_rs::core::str_comps;
+    
+        fn fixture(_string: &String) -> Vec<String> {
+            let instance = str_comps::StringCompounds::from(_string);
+    
+            return instance.extract();
+        }
+
+
+        #[test]
+        fn case_special_char_sep() {
+            assert_eq!(
+                fixture(&String::from("abc_|_def__@__ghi")),
+                vec!["abc", "def", "ghi"]
+            )
+        }
+
+        #[test]
+        fn case_uppercase_letter_sep() {
+            assert_eq!(
+                fixture(&String::from("AbcDefGhi")),
+                vec!["abc", "def", "ghi"]
+            )
+        }
+
+    }
+
 
 }

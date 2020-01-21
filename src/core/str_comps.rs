@@ -1,4 +1,4 @@
-const WHITE_SPACE: char = ' ';
+use crate::core::spec_chars::SpecChars;
 
 pub struct StringCompounds {
     _string: String
@@ -10,6 +10,15 @@ impl StringCompounds {
         return StringCompounds { _string: _string.clone() };
     }
 
+    pub fn extract(&self) -> Vec<String> {
+        let mut compounds = self.split_on_special_char();
+        if compounds.len() == 1 {
+            compounds = self.split_on_uppercase_letters();
+        }
+
+        return compounds;
+    }
+
     pub fn split_on_uppercase_letters(&self) -> Vec<String> {
         let alphanums: String = self._string.chars()
         .filter(|_char|_char.is_alphanumeric())
@@ -17,7 +26,9 @@ impl StringCompounds {
             if _char.is_lowercase() {
                 return _char.to_string();
             } else {
-                return format!("{}{}", WHITE_SPACE, _char.to_lowercase());
+                return format!(
+                    "{}{}", SpecChars::WhiteSpace.to_string(), _char.to_lowercase()
+                );
             }
         })
         .collect::<String>();
@@ -33,7 +44,7 @@ impl StringCompounds {
             if _char.is_alphanumeric() {
                 return _char.to_string().to_lowercase();
             } else {
-                return WHITE_SPACE.to_string();
+                return SpecChars::WhiteSpace.to_string();
             }
         })
         .collect::<String>();
