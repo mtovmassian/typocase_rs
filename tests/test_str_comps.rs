@@ -4,7 +4,7 @@ extern crate typocase_rs;
 mod test_split_on_upper_case_letters {
     use typocase_rs::core::str_comps;
 
-    fn fixture(_string: &String) -> Vec<String> {
+    fn fixture(_string: String) -> Vec<String> {
         let instance = str_comps::StringCompounds::new(_string);
 
         return instance.split_on_uppercase_letters();
@@ -13,7 +13,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_empty_string() {
         assert_eq!(
-            fixture(&String::from("")),
+            fixture(String::from("")),
             Vec::new() as Vec<String>
         );
     }
@@ -21,11 +21,11 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_uppercase_letter_sep() {
         assert_eq!(
-            fixture(&String::from("AbcDefGhi")),
+            fixture(String::from("AbcDefGhi")),
             vec!["abc", "def", "ghi"]
         );
         assert_eq!(
-            fixture(&String::from("abcDefGhi")),
+            fixture(String::from("abcDefGhi")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -33,7 +33,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_uppercase_letter_sep_and_leading_trailing_special_char() {
         assert_eq!(
-            fixture(&String::from("_AbcDefGhi_")),
+            fixture(String::from("_AbcDefGhi_")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -41,7 +41,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_only_uppercase_letter_sep() {
         assert_eq!(
-            fixture(&String::from("ABCDEFGHI")),
+            fixture(String::from("ABCDEFGHI")),
             vec!["a", "b", "c", "d", "e", "f", "g", "h", "i"]
         );
     }
@@ -49,7 +49,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_uppercase_letter_sep_and_special_char_sep() {
         assert_eq!(
-            fixture(&String::from("A_b_c_D_e_f_G_h_i")),
+            fixture(String::from("A_b_c_D_e_f_G_h_i")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -57,7 +57,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_no_uppercase_letter_sep() {
         assert_eq!(
-            fixture(&String::from("abcdefghi")),
+            fixture(String::from("abcdefghi")),
             vec!["abcdefghi"]
         );
     }
@@ -65,7 +65,7 @@ mod test_split_on_upper_case_letters {
     #[test]
     fn case_no_uppercase_letter_sep_and_special_char_sep() {
         assert_eq!(
-            fixture(&String::from("abc_def_ghi")),
+            fixture(String::from("abc_def_ghi")),
             vec!["abcdefghi"]
         );
     }
@@ -76,7 +76,7 @@ mod test_split_on_upper_case_letters {
 mod test_split_on_special_char {
     use typocase_rs::core::str_comps;
 
-    fn fixture(_string: &String) -> Vec<String> {
+    fn fixture(_string: String) -> Vec<String> {
         let instance = str_comps::StringCompounds::new(_string);
 
         return instance.split_on_special_char();
@@ -85,7 +85,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_empty_string() {
         assert_eq!(
-            fixture(&String::from("")),
+            fixture(String::from("")),
             Vec::new() as Vec<String>
         );
     }
@@ -93,15 +93,15 @@ mod test_split_on_special_char {
     #[test]
     fn case_special_char_sep() {
         assert_eq!(
-            fixture(&String::from("abc_def_ghi")),
+            fixture(String::from("abc_def_ghi")),
             vec!["abc", "def", "ghi"]
         );
         assert_eq!(
-            fixture(&String::from("abc/def/ghi")),
+            fixture(String::from("abc/def/ghi")),
             vec!["abc", "def", "ghi"]
         );
         assert_eq!(
-            fixture(&String::from("abc@def.ghi")),
+            fixture(String::from("abc@def.ghi")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -109,7 +109,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_multi_special_char_sep() {
         assert_eq!(
-            fixture(&String::from("abc_|_def__@__ghi")),
+            fixture(String::from("abc_|_def__@__ghi")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -117,7 +117,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_special_char_sep_and_leading_trailing_special_char() {
         assert_eq!(
-            fixture(&String::from("_abc_def_ghi_")),
+            fixture(String::from("_abc_def_ghi_")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -125,7 +125,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_special_char_sep_and_uppercase_letters() {
         assert_eq!(
-            fixture(&String::from("ABC_DEF_GHI")),
+            fixture(String::from("ABC_DEF_GHI")),
             vec!["abc", "def", "ghi"]
         );
     }
@@ -133,7 +133,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_no_special_char_sep() {
         assert_eq!(
-            fixture(&String::from("abcdefghi")),
+            fixture(String::from("abcdefghi")),
             vec!["abcdefghi"]
         );
     }
@@ -141,7 +141,7 @@ mod test_split_on_special_char {
     #[test]
     fn case_no_special_char_sep_and_uppercase_letters() {
         assert_eq!(
-            fixture(&String::from("abcDefGhi")),
+            fixture(String::from("abcDefGhi")),
             vec!["abcdefghi"]
         );
     }
@@ -150,7 +150,7 @@ mod test_split_on_special_char {
     mod test_extract {
         use typocase_rs::core::str_comps;
     
-        fn fixture(_string: &String) -> Vec<String> {
+        fn fixture(_string: String) -> Vec<String> {
             let instance = str_comps::StringCompounds::new(_string);
     
             return instance.extract();
@@ -160,7 +160,7 @@ mod test_split_on_special_char {
         #[test]
         fn case_special_char_sep() {
             assert_eq!(
-                fixture(&String::from("abc_|_def__@__ghi")),
+                fixture(String::from("abc_|_def__@__ghi")),
                 vec!["abc", "def", "ghi"]
             )
         }
@@ -168,7 +168,7 @@ mod test_split_on_special_char {
         #[test]
         fn case_uppercase_letter_sep() {
             assert_eq!(
-                fixture(&String::from("AbcDefGhi")),
+                fixture(String::from("AbcDefGhi")),
                 vec!["abc", "def", "ghi"]
             )
         }

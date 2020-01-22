@@ -6,8 +6,8 @@ pub struct StringCompounds {
 
 impl StringCompounds {
 
-    pub fn new(_string: &String) -> StringCompounds {
-        return StringCompounds { _string: _string.clone() };
+    pub fn new(_string: String) -> StringCompounds {
+        return StringCompounds { _string: _string };
     }
 
     pub fn extract(&self) -> Vec<String> {
