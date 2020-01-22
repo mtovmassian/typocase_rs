@@ -6,7 +6,7 @@ pub struct StringCompounds {
 
 impl StringCompounds {
 
-    pub fn from(_string: &String) -> StringCompounds {
+    pub fn new(_string: &String) -> StringCompounds {
         return StringCompounds { _string: _string.clone() };
     }
 

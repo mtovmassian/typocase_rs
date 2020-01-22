@@ -5,7 +5,7 @@ mod test_split_on_upper_case_letters {
     use typocase_rs::core::str_comps;
 
     fn fixture(_string: &String) -> Vec<String> {
-        let instance = str_comps::StringCompounds::from(_string);
+        let instance = str_comps::StringCompounds::new(_string);
 
         return instance.split_on_uppercase_letters();
     }
@@ -77,7 +77,7 @@ mod test_split_on_special_char {
     use typocase_rs::core::str_comps;
 
     fn fixture(_string: &String) -> Vec<String> {
-        let instance = str_comps::StringCompounds::from(_string);
+        let instance = str_comps::StringCompounds::new(_string);
 
         return instance.split_on_special_char();
     }
@@ -151,7 +151,7 @@ mod test_split_on_special_char {
         use typocase_rs::core::str_comps;
     
         fn fixture(_string: &String) -> Vec<String> {
-            let instance = str_comps::StringCompounds::from(_string);
+            let instance = str_comps::StringCompounds::new(_string);
     
             return instance.extract();
         }

@@ -1,2 +1,2 @@
 pub mod str_comps;
-mod spec_chars;
+pub mod spec_chars;
