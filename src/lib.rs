@@ -61,3 +61,25 @@ impl TypoCase {
     }
 
 }
+
+pub struct Config {
+    pub transformation: String,
+    pub string: String
+}
+
+impl Config {
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
+        args.next();
+
+        let transformation = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn\'t get a transformation"),
+        };
+        let string = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Didn\'t get a string"),
+        };
+
+        Ok(Config { transformation, string })
+    }
+}

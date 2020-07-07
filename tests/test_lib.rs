@@ -1,8 +1,8 @@
-extern crate typocase_rs;
+extern crate typocase;
 
 #[cfg(test)]
 mod test_pascal_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -94,7 +94,7 @@ mod test_pascal_case {
 
 #[cfg(test)]
 mod test_camel_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -186,7 +186,7 @@ mod test_camel_case {
 
 #[cfg(test)]
 mod test_snake_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -278,7 +278,7 @@ mod test_snake_case {
 
 #[cfg(test)]
 mod test_constant_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -370,7 +370,7 @@ mod test_constant_case {
 
 #[cfg(test)]
 mod test_kebab_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -461,7 +461,7 @@ mod test_kebab_case {
 }
 
 mod test_path_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
@@ -552,7 +552,7 @@ mod test_path_case {
 }
 
 mod test_dot_case {
-    use typocase_rs::TypoCase;
+    use typocase::TypoCase;
 
     fn fixture(_string: String) -> String {
         let instance = TypoCase::new(_string);
