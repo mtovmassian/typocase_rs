@@ -45,14 +45,6 @@ impl TypoCase {
         return self.join_on_spec_char(SpecChars::Dash);
     }
 
-    pub fn path_case(&self) -> String {
-        return self.join_on_spec_char(SpecChars::Slash);
-    }
-
-    pub fn dot_case(&self) -> String {
-        return self.join_on_spec_char(SpecChars::Dot);
-    }
-
     fn join_on_spec_char(&self, spec_char: SpecChars) -> String {
         return self.compounds.iter()
         .map(|s| s.to_string())
@@ -73,11 +65,11 @@ impl Config {
 
         let transformation = match args.next() {
             Some(arg) => arg,
-            None => return Err("Didn\'t get a transformation"),
+            None => return Err("Missing typocase transformation argument."),
         };
         let string = match args.next() {
             Some(arg) => arg,
-            None => return Err("Didn\'t get a string"),
+            None => return Err("Missing string to transform argument."),
         };
 
         Ok(Config { transformation, string })
