@@ -45,14 +45,6 @@ impl TypoCase {
         return self.join_on_spec_char(SpecChars::Dash);
     }
 
-    pub fn path_case(&self) -> String {
-        return self.join_on_spec_char(SpecChars::Slash);
-    }
-
-    pub fn dot_case(&self) -> String {
-        return self.join_on_spec_char(SpecChars::Dot);
-    }
-
     fn join_on_spec_char(&self, spec_char: SpecChars) -> String {
         return self.compounds.iter()
         .map(|s| s.to_string())
@@ -60,4 +52,26 @@ impl TypoCase {
         .join(&spec_char.to_string());
     }
 
+}
+
+pub struct Config {
+    pub transformation: String,
+    pub string: String
+}
+
+impl Config {
+    pub fn new(mut args: std::env::Args) -> Result<Config, &'static str> {
+        args.next();
+
+        let transformation = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Missing typocase transformation argument."),
+        };
+        let string = match args.next() {
+            Some(arg) => arg,
+            None => return Err("Missing string to transform argument."),
+        };
+
+        Ok(Config { transformation, string })
+    }
 }
