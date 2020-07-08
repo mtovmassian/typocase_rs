@@ -1,8 +1,8 @@
-extern crate typocase_rs;
+extern crate typocase;
 
 #[cfg(test)]
 mod test_split_on_upper_case_letters {
-    use typocase_rs::core::str_comps;
+    use typocase::core::str_comps;
 
     fn fixture(_string: String) -> Vec<String> {
         let instance = str_comps::StringCompounds::new(_string);
@@ -74,7 +74,7 @@ mod test_split_on_upper_case_letters {
 
 #[cfg(test)]
 mod test_split_on_special_char {
-    use typocase_rs::core::str_comps;
+    use typocase::core::str_comps;
 
     fn fixture(_string: String) -> Vec<String> {
         let instance = str_comps::StringCompounds::new(_string);
@@ -148,7 +148,7 @@ mod test_split_on_special_char {
 
     #[cfg(test)]
     mod test_extract {
-        use typocase_rs::core::str_comps;
+        use typocase::core::str_comps;
     
         fn fixture(_string: String) -> Vec<String> {
             let instance = str_comps::StringCompounds::new(_string);
